@@ -5,15 +5,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const statMeter = document.getElementById('stat-meter');
+    const statBar = document.getElementById('stat-bar'); // NEW: Get the bar element
     const imageGallery = document.querySelectorAll('.gallery-image');
     
     // 1. Stat Meter Animation
-    // Sets the width of the stat bar based on the data-value attribute in HTML
+    // Get the target value from the parent HTML element
     const statValue = statMeter.getAttribute('data-value');
 
     // Use a short delay to ensure CSS transitions trigger correctly
     setTimeout(() => {
-        statMeter.querySelector('::before').style.width = statValue + '%';
+        // FIX: Target the inner bar element's style property
+        statBar.style.width = statValue + '%'; 
+        // Add the percentage text to the bar
+        statBar.textContent = statValue + '%'; 
     }, 100);
 
     // 2. Interactive Image Blur Effect (on click)
